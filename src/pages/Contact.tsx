@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { SectionHeading } from '../components/SectionHeading';
 import { PROJECT_TYPES } from '../data/pricing';
-import { CheckCircle2, Send, ArrowUpRight, Terminal } from 'lucide-react';
+import { CheckCircle2, Send } from 'lucide-react';
 
 export const Contact: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -20,53 +20,40 @@ export const Contact: React.FC = () => {
     setSubmitted(true);
   };
 
-  const inputClass = "w-full px-4 py-3 text-sm bg-[#08080A] border border-white/10 text-white placeholder-zinc-600 rounded-sm focus:outline-none focus:border-cyan-400/80 transition-colors";
+  const inputClass = "w-full px-4 py-3 text-sm bg-[#111] border border-white/[0.08] text-white placeholder-[#444] rounded-sm focus:outline-none focus:border-white/30 transition-colors";
 
   return (
-    <div className="max-w-6xl mx-auto px-6 lg:px-8 py-20 sm:py-28 relative">
+    <div className="max-w-6xl mx-auto px-6 lg:px-8 py-16 sm:py-24">
       <SectionHeading
-        label="[ SECURE TRANSMISSION UPLINK ]"
-        heading="Let's build something ahead of its time."
-        description="Transmit your system requirements. Our engineering leads analyze every brief and respond within 24 hours."
+        label="Contact"
+        heading="Let's build something."
+        description="Tell us about your project. We'll get back to you within 24 hours."
       />
 
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
 
-        {/* Form Container */}
-        <div className="lg:col-span-7 cyber-card cyber-corners p-8 sm:p-10 rounded-sm bg-[#0A0A0C]/90 border border-white/10 shadow-2xl">
+        {/* Form */}
+        <div className="lg:col-span-7">
           {submitted ? (
             <div className="py-16 text-center space-y-4">
-              <div className="w-12 h-12 rounded-full bg-cyan-400 text-black flex items-center justify-center mx-auto shadow-[0_0_20px_rgba(0,240,255,0.4)]">
-                <CheckCircle2 className="w-6 h-6 stroke-[2.5]" />
-              </div>
-              <h3 className="font-heading text-2xl font-bold text-white">Transmission Received.</h3>
-              <p className="text-sm text-zinc-400 max-w-sm mx-auto leading-relaxed">
-                Your technical specifications have been encrypted and dispatched to our engineering team. Expect a response within 24 hours.
+              <CheckCircle2 className="w-8 h-8 text-white mx-auto" />
+              <h3 className="font-heading text-2xl font-bold text-white">Inquiry received.</h3>
+              <p className="text-sm text-[#6B6B6B] max-w-sm mx-auto">
+                We'll review your project details and reach out within 24 hours.
               </p>
               <button
                 onClick={() => setSubmitted(false)}
-                className="text-xs font-mono text-cyan-400 hover:text-cyan-300 underline underline-offset-4 transition-colors pt-4"
+                className="text-sm text-[#6B6B6B] hover:text-white underline underline-offset-2 transition-colors"
               >
-                TRANSMIT ANOTHER DISPATCH
+                Send another message
               </button>
             </div>
           ) : (
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="flex items-center justify-between pb-3 border-b border-white/[0.08]">
-                <div className="flex items-center gap-2 font-mono text-xs text-zinc-400">
-                  <Terminal className="w-3.5 h-3.5 text-cyan-400" />
-                  <span>TRANSMISSION PROTOCOL: V2.6</span>
-                </div>
-                <span className="font-mono text-[10px] text-emerald-400 flex items-center gap-1.5">
-                  <span className="led-emerald" />
-                  <span>UPLINK READY</span>
-                </span>
-              </div>
-
+            <form onSubmit={handleSubmit} className="space-y-5">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                 <div className="space-y-2">
-                  <label htmlFor="c-name" className="block text-[11px] font-mono text-zinc-400 uppercase tracking-wider">
-                    NAME *
+                  <label htmlFor="c-name" className="block text-[12px] font-mono text-[#6B6B6B] uppercase tracking-wider">
+                    Name *
                   </label>
                   <input
                     id="c-name"
@@ -79,8 +66,8 @@ export const Contact: React.FC = () => {
                   />
                 </div>
                 <div className="space-y-2">
-                  <label htmlFor="c-email" className="block text-[11px] font-mono text-zinc-400 uppercase tracking-wider">
-                    EMAIL *
+                  <label htmlFor="c-email" className="block text-[12px] font-mono text-[#6B6B6B] uppercase tracking-wider">
+                    Email *
                   </label>
                   <input
                     id="c-email"
@@ -95,13 +82,13 @@ export const Contact: React.FC = () => {
               </div>
 
               <div className="space-y-2">
-                <label htmlFor="c-company" className="block text-[11px] font-mono text-zinc-400 uppercase tracking-wider">
-                  ORGANIZATION / ENTITY
+                <label htmlFor="c-company" className="block text-[12px] font-mono text-[#6B6B6B] uppercase tracking-wider">
+                  Company
                 </label>
                 <input
                   id="c-company"
                   type="text"
-                  placeholder="Organization name (optional)"
+                  placeholder="Company name (optional)"
                   value={formData.company}
                   onChange={(e) => setFormData({ ...formData, company: e.target.value })}
                   className={inputClass}
@@ -110,8 +97,8 @@ export const Contact: React.FC = () => {
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                 <div className="space-y-2">
-                  <label htmlFor="c-type" className="block text-[11px] font-mono text-zinc-400 uppercase tracking-wider">
-                    SYSTEM TYPE
+                  <label htmlFor="c-type" className="block text-[12px] font-mono text-[#6B6B6B] uppercase tracking-wider">
+                    Project Type
                   </label>
                   <select
                     id="c-type"
@@ -127,8 +114,8 @@ export const Contact: React.FC = () => {
                   </select>
                 </div>
                 <div className="space-y-2">
-                  <label htmlFor="c-budget" className="block text-[11px] font-mono text-zinc-400 uppercase tracking-wider">
-                    TARGET BUDGET (PHP)
+                  <label htmlFor="c-budget" className="block text-[12px] font-mono text-[#6B6B6B] uppercase tracking-wider">
+                    Budget (PHP)
                   </label>
                   <select
                     id="c-budget"
@@ -145,14 +132,14 @@ export const Contact: React.FC = () => {
               </div>
 
               <div className="space-y-2">
-                <label htmlFor="c-msg" className="block text-[11px] font-mono text-zinc-400 uppercase tracking-wider">
-                  PROJECT SPECIFICATIONS & BRIEF *
+                <label htmlFor="c-msg" className="block text-[12px] font-mono text-[#6B6B6B] uppercase tracking-wider">
+                  Message *
                 </label>
                 <textarea
                   id="c-msg"
                   required
-                  rows={4}
-                  placeholder="Describe your technical requirements, goals, and reference applications..."
+                  rows={5}
+                  placeholder="Describe your project..."
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                   className={inputClass + " resize-none"}
@@ -162,57 +149,50 @@ export const Contact: React.FC = () => {
               <button
                 type="submit"
                 id="contact-submit-btn"
-                className="cyber-btn-primary w-full flex items-center justify-center gap-2 py-3.5 text-xs font-mono font-bold uppercase tracking-wider rounded-sm"
+                className="w-full flex items-center justify-center gap-2 py-3.5 text-sm font-semibold text-black bg-white rounded-sm hover:bg-[#E8E8E8] transition-colors"
               >
-                <span>TRANSMIT BRIEF</span>
+                <span>Send Inquiry</span>
                 <Send className="w-3.5 h-3.5" />
               </button>
             </form>
           )}
         </div>
 
-        {/* Sidebar Info */}
+        {/* Sidebar info */}
         <div className="lg:col-span-5 space-y-8">
-          <div className="cyber-card cyber-corners p-7 rounded-sm bg-[#08080A]/80 border border-white/10 space-y-6">
-            <div className="border-b border-white/[0.08] pb-4">
-              <span className="font-mono text-[11px] text-cyan-400 uppercase tracking-widest block font-bold">
-                // NODE TELEMETRY //
-              </span>
-            </div>
-
-            <div className="space-y-5 text-[14px]">
+          <div className="border-t border-white/[0.07] pt-8">
+            <p className="font-mono text-[11px] text-[#444] uppercase tracking-widest mb-6">
+              Contact details
+            </p>
+            <div className="space-y-5 text-[14px] text-[#6B6B6B]">
               <div>
-                <p className="text-[11px] font-mono text-zinc-500 uppercase tracking-wider mb-1">Direct Uplink</p>
-                <a href="mailto:hello@yourdomain.com" className="text-white hover:text-cyan-300 font-mono text-sm transition-colors">
+                <p className="text-[12px] font-mono text-[#444] uppercase tracking-wider mb-1">Email</p>
+                <a href="mailto:hello@yourdomain.com" className="text-white hover:text-[#B0B0B0] transition-colors">
                   hello@yourdomain.com
                 </a>
               </div>
               <div>
-                <p className="text-[11px] font-mono text-zinc-500 uppercase tracking-wider mb-1">Physical Station Coordinates</p>
-                <p className="text-zinc-300 font-medium">Metro Manila, Philippines</p>
-                <p className="text-[12px] font-mono text-zinc-500 mt-0.5">14.5995° N, 120.9842° E // Remote-First Global Node</p>
+                <p className="text-[12px] font-mono text-[#444] uppercase tracking-wider mb-1">Location</p>
+                <p className="text-zinc-300">Metro Manila, Philippines</p>
+                <p className="text-[13px] text-[#444] mt-0.5">Remote-first. Clients globally.</p>
               </div>
               <div>
-                <p className="text-[11px] font-mono text-zinc-500 uppercase tracking-wider mb-1">Operational Hours</p>
-                <p className="text-zinc-300">Mon – Fri, 09:00 – 18:00 PHT</p>
-                <p className="text-[12px] font-mono text-emerald-400 mt-0.5">Sub-24h turnaround guarantee</p>
+                <p className="text-[12px] font-mono text-[#444] uppercase tracking-wider mb-1">Hours</p>
+                <p className="text-zinc-300">Mon – Fri, 9AM – 6PM PHT</p>
+                <p className="text-[13px] text-[#444] mt-0.5">Replies within 24 hours.</p>
               </div>
             </div>
           </div>
 
-          <div className="cyber-card p-6 rounded-sm bg-[#0A0A0C]/90 border border-white/10">
-            <span className="font-mono text-[10px] text-cyan-400 uppercase tracking-widest block font-bold mb-2">
-              NEED IMMEDIATE COST SCOPING?
-            </span>
-            <p className="text-xs text-zinc-400 mb-4 leading-relaxed">
-              Use our interactive Project Planner to customize modules, features, and receive instant transparency.
+          <div className="border-t border-white/[0.07] pt-8">
+            <p className="text-[13px] text-[#6B6B6B] mb-4">
+              Want an instant estimate? Use the project planner.
             </p>
             <a
               href="/planner.html"
-              className="cyber-btn-secondary inline-flex items-center gap-2 text-xs font-mono font-bold tracking-wider px-4 py-2.5 rounded-sm"
+              className="inline-flex items-center gap-1.5 text-sm font-medium text-white border border-white/15 px-4 py-2 rounded-sm hover:bg-white/[0.05] transition-colors"
             >
-              <span>LAUNCH PLANNER</span>
-              <ArrowUpRight className="w-3.5 h-3.5 text-cyan-400" />
+              Open Planner (₱)
             </a>
           </div>
         </div>
