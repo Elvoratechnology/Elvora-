@@ -1,0 +1,101 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --bg: #050505;
+    --surface: #0A0A0A;
+    --border: rgba(255, 255, 255, 0.08);
+    --text: #EDEDED;
+    --muted: #6B6B6B;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: #050505;
+    color: #EDEDED;
+    font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Space Grotesk', sans-serif;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+  }
+
+  ::selection {
+    background: #fff;
+    color: #000;
+  }
+}
+
+/* Precise subtle dot grid */
+.bg-dot-grid {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.09) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+/* Hero vignette gradient */
+.hero-vignette {
+  background: linear-gradient(to bottom, rgba(5, 5, 5, 0.4), transparent, #050505);
+}
+
+/* Hollow text outline for TECHNOLOGY headline */
+.text-outline {
+  color: transparent;
+  -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.42);
+}
+@media (min-width: 768px) {
+  .text-outline {
+    -webkit-text-stroke: 2px rgba(255, 255, 255, 0.42);
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: #050505; }
+::-webkit-scrollbar-thumb { background: #222; }
+::-webkit-scrollbar-thumb:hover { background: #333; }
+
+/* =========================================================================
+   LIGHT MODE
+   Exact inverse of dark mode — one CSS filter flips every color.
+   #050505 (near-black bg) → near-white bg
+   #EDEDED (near-white text) → near-black text
+   All borders, cards, surfaces — automatically inverted.
+   iframes are re-inverted so embedded websites display normally.
+   Logos are NOT re-inverted — they flip naturally to complement each mode.
+========================================================================= */
+
+html.light body {
+  filter: invert(1) hue-rotate(180deg);
+}
+
+/* Re-invert iframes so embedded websites show their real colors */
+html.light iframe {
+  filter: invert(1) hue-rotate(180deg);
+}
+
+/* Logo blend mode:
+   Dark mode → mix-blend-mode: screen removes the black background,
+   leaving only the white E mark visible on the dark site.
+   Light mode → body inversion flips white E to black E, black bg to white bg.
+   No square, no mismatch — complements both modes automatically. */
+img[alt*="ELVORA"] {
+  mix-blend-mode: screen;
+}
+html.light img[alt*="ELVORA"] {
+  mix-blend-mode: multiply;
+  filter: none;
+}
