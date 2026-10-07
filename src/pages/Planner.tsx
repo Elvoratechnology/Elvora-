@@ -113,37 +113,45 @@ export const Planner: React.FC = () => {
   };
 
   return (
-    <div className="py-12 sm:py-20 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
-      {/* Top Planner Mode Switcher */}
-      <div className="mb-8 flex items-center justify-start">
-        <div className="inline-flex p-1 rounded-sm border border-white/10 bg-[#0A0A0A]">
+    <div className="py-12 sm:py-20 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto relative">
+      {/* Top Planner Mode Switcher with Futuristic Telemetry */}
+      <div className="mb-8 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div className="inline-flex p-1 rounded-sm border border-white/10 bg-[#0A0A0A] shadow-lg">
           <button
             type="button"
             onClick={() => setPlannerMode('professional')}
-            className={`px-6 py-2.5 text-xs font-mono font-bold uppercase tracking-wider transition-all duration-200 rounded-sm ${
+            className={`px-6 py-2.5 text-xs font-mono font-bold uppercase tracking-wider transition-all duration-200 rounded-sm flex items-center gap-2 ${
               plannerMode === 'professional'
-                ? 'bg-white text-black shadow-md planner-mode-btn-active'
+                ? 'bg-white text-black shadow-[0_0_15px_rgba(255,255,255,0.3)] planner-mode-btn-active'
                 : 'text-zinc-400 hover:text-white bg-transparent planner-mode-btn-inactive'
             }`}
           >
-            PROFESSIONAL
+            {plannerMode === 'professional' && <span className="w-1.5 h-1.5 rounded-full bg-cyan-400" />}
+            <span>PROFESSIONAL</span>
           </button>
           <button
             type="button"
             onClick={() => setPlannerMode('student')}
-            className={`px-6 py-2.5 text-xs font-mono font-bold uppercase tracking-wider transition-all duration-200 rounded-sm ${
+            className={`px-6 py-2.5 text-xs font-mono font-bold uppercase tracking-wider transition-all duration-200 rounded-sm flex items-center gap-2 ${
               plannerMode === 'student'
-                ? 'bg-white text-black shadow-md planner-mode-btn-active'
+                ? 'bg-white text-black shadow-[0_0_15px_rgba(255,255,255,0.3)] planner-mode-btn-active'
                 : 'text-zinc-400 hover:text-white bg-transparent planner-mode-btn-inactive'
             }`}
           >
-            STUDENT
+            {plannerMode === 'student' && <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />}
+            <span>STUDENT</span>
           </button>
+        </div>
+
+        {/* Telemetry Indicator */}
+        <div className="hidden sm:flex items-center gap-2.5 font-mono text-[11px] text-zinc-400 border border-white/10 px-3.5 py-1.5 rounded-full bg-white/[0.02]">
+          <span className="led-cyan" />
+          <span>CONFIGURATOR TERMINAL // ONLINE</span>
         </div>
       </div>
 
       {/* Main Container Card */}
-      <div className="relative rounded-lg border border-white/[0.08] bg-[#0A0A0A] p-6 sm:p-10 lg:p-12 shadow-2xl">
+      <div className="relative rounded-lg cyber-card cyber-corners bg-[#0A0A0C]/90 p-6 sm:p-10 lg:p-12 shadow-[0_0_50px_rgba(0,0,0,0.8)]">
 
         {/* =========================================================================
             STUDENT PLANNER INTERFACE (Screenshot 1)
@@ -284,15 +292,45 @@ export const Planner: React.FC = () => {
         ========================================================================= */}
         {plannerMode === 'professional' && !proSubmitted && (
           <div className="relative z-10 space-y-10 animate-in fade-in duration-200">
+            {/* HUD Step Pipeline Progress Bar */}
+            <div className="border border-white/10 bg-[#070709] p-2 sm:p-2.5 rounded-sm flex items-center justify-between overflow-x-auto gap-1.5 select-none">
+              {[
+                { num: 1, label: 'SERVICES' },
+                { num: 2, label: 'BUDGET' },
+                { num: 3, label: 'TIMELINE' },
+                { num: 4, label: 'DETAILS' },
+                { num: 5, label: 'CONFIRM' },
+              ].map((s) => (
+                <button
+                  type="button"
+                  key={s.num}
+                  onClick={() => s.num < proStep && setProStep(s.num)}
+                  className={`flex items-center gap-2 px-3 sm:px-4 py-1.5 rounded-sm font-mono text-[10px] sm:text-[11px] whitespace-nowrap transition-all ${
+                    proStep === s.num
+                      ? 'bg-white text-black font-bold shadow-[0_0_15px_rgba(255,255,255,0.4)]'
+                      : proStep > s.num
+                      ? 'text-cyan-400 hover:text-white cursor-pointer'
+                      : 'text-zinc-600 cursor-not-allowed'
+                  }`}
+                >
+                  <span className={proStep === s.num ? 'text-black font-bold' : 'text-zinc-500'}>
+                    0{s.num}
+                  </span>
+                  <span>{s.label}</span>
+                </button>
+              ))}
+            </div>
+
             {/* STEP 01: FEATURES NEEDED (Screenshot 4) */}
             {proStep === 1 && (
               <div className="space-y-8 animate-in fade-in duration-200">
                 <div className="border-b border-white/[0.08] pb-5">
-                  <h3 className="font-mono text-xs uppercase text-zinc-300 tracking-wider font-semibold">
-                    01 / FEATURES NEEDED — Select all that apply
-                  </h3>
+                  <div className="inline-flex items-center gap-2 font-mono text-xs uppercase text-cyan-400 tracking-wider font-semibold mb-1">
+                    <span className="w-1.5 h-1.5 rounded-full bg-cyan-400" />
+                    <span>01 / ARCHITECTURAL CAPABILITIES — Select all that apply</span>
+                  </div>
                   <p className="text-xs text-zinc-500 mt-1">
-                    Choose the services you need. You can select multiple.
+                    Select the required systems and services. You can select multiple.
                   </p>
                 </div>
 
@@ -304,13 +342,13 @@ export const Planner: React.FC = () => {
                       <div
                         key={srv.id}
                         onClick={() => toggleProService(srv.id)}
-                        className={`cursor-pointer min-h-[140px] p-5 rounded-md border flex flex-col items-center justify-center text-center transition-all duration-150 select-none ${
+                        className={`cursor-pointer min-h-[140px] p-5 rounded-md border flex flex-col items-center justify-center text-center transition-all duration-200 select-none ${
                           isSelected
-                            ? 'border-white bg-white/[0.05] shadow-[0_0_15px_rgba(255,255,255,0.1)]'
+                            ? 'border-cyan-400/80 bg-cyan-400/5 shadow-[0_0_20px_rgba(0,240,255,0.15)] text-cyan-300'
                             : 'border-white/[0.08] bg-[#070707] hover:border-white/20 hover:bg-white/[0.02]'
                         }`}
                       >
-                        <div className={isSelected ? 'text-white' : 'text-zinc-400'}>
+                        <div className={isSelected ? 'text-cyan-400' : 'text-zinc-400'}>
                           {getServiceIcon(srv.iconType)}
                         </div>
                         <span className="font-mono text-[11px] sm:text-xs font-bold uppercase tracking-wider text-white leading-snug">
@@ -327,13 +365,11 @@ export const Planner: React.FC = () => {
                     type="button"
                     onClick={() => setProStep(2)}
                     disabled={proServices.length === 0}
-                    className={`px-8 py-3 rounded-sm text-xs font-mono font-bold uppercase tracking-wider transition-all ${
-                      proServices.length > 0
-                        ? 'bg-white text-black hover:bg-zinc-200 shadow'
-                        : 'bg-zinc-800 text-zinc-500 cursor-not-allowed'
+                    className={`cyber-btn-primary px-8 py-3 rounded-sm text-xs font-mono font-bold uppercase tracking-wider transition-all ${
+                      proServices.length === 0 && 'opacity-40 cursor-not-allowed'
                     }`}
                   >
-                    NEXT &rarr;
+                    NEXT: BUDGET &rarr;
                   </button>
                 </div>
               </div>
@@ -359,24 +395,24 @@ export const Planner: React.FC = () => {
                       <div
                         key={b.id}
                         onClick={() => setProBudget(b.id)}
-                        className={`cursor-pointer relative p-7 rounded-md border flex flex-col justify-between min-h-[170px] transition-all duration-150 select-none ${
+                        className={`cursor-pointer relative p-7 rounded-md border flex flex-col justify-between min-h-[170px] transition-all duration-200 select-none ${
                           isSelected
-                            ? 'border-white bg-white/[0.04] shadow-[0_0_15px_rgba(255,255,255,0.1)]'
+                            ? 'border-cyan-400/80 bg-cyan-400/5 shadow-[0_0_20px_rgba(0,240,255,0.15)]'
                             : 'border-white/[0.08] bg-[#070707] hover:border-white/20 hover:bg-white/[0.02]'
                         }`}
                       >
                         {b.isPopular && (
-                          <div className="absolute -top-3 right-4 bg-white text-black px-2.5 py-0.5 text-[9px] font-mono font-bold uppercase tracking-widest rounded-sm shadow">
-                            MOST POPULAR
+                          <div className="absolute -top-3 right-4 bg-cyan-400 text-black px-2.5 py-0.5 text-[9px] font-mono font-bold uppercase tracking-widest rounded-sm shadow-[0_0_10px_rgba(0,240,255,0.6)]">
+                            RECOMMENDED
                           </div>
                         )}
 
-                        <span className="font-mono text-xs uppercase text-zinc-500 tracking-widest font-semibold block">
+                        <span className="font-mono text-xs uppercase text-zinc-400 tracking-widest font-semibold block">
                           {b.tier}
                         </span>
 
                         <div className="my-3">
-                          <span className="font-heading text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
+                          <span className={`font-heading text-2xl sm:text-3xl font-extrabold tracking-tight ${isSelected ? 'text-cyan-300' : 'text-white'}`}>
                             {b.range}
                           </span>
                         </div>
@@ -394,16 +430,16 @@ export const Planner: React.FC = () => {
                   <button
                     type="button"
                     onClick={() => setProStep(1)}
-                    className="px-6 py-3 rounded-sm text-xs font-mono font-medium uppercase tracking-wider text-zinc-300 border border-white/10 hover:border-white/20 bg-transparent transition-all"
+                    className="cyber-btn-secondary px-6 py-3 rounded-sm text-xs font-mono font-medium uppercase tracking-wider"
                   >
                     &larr; BACK
                   </button>
                   <button
                     type="button"
                     onClick={() => setProStep(3)}
-                    className="px-8 py-3 rounded-sm text-xs font-mono font-bold uppercase tracking-wider bg-white text-black hover:bg-zinc-200 transition-all shadow"
+                    className="cyber-btn-primary px-8 py-3 rounded-sm text-xs font-mono font-bold uppercase tracking-wider"
                   >
-                    NEXT &rarr;
+                    NEXT: TIMELINE &rarr;
                   </button>
                 </div>
               </div>
@@ -413,11 +449,12 @@ export const Planner: React.FC = () => {
             {proStep === 3 && (
               <div className="space-y-8 animate-in fade-in duration-200">
                 <div className="border-b border-white/[0.08] pb-5">
-                  <h3 className="font-mono text-xs uppercase text-zinc-300 tracking-wider font-semibold">
-                    03 / TARGET TIMELINE
-                  </h3>
+                  <div className="inline-flex items-center gap-2 font-mono text-xs uppercase text-cyan-400 tracking-wider font-semibold mb-1">
+                    <span className="w-1.5 h-1.5 rounded-full bg-cyan-400" />
+                    <span>03 / TARGET TIMELINE & DEPLOYMENT SPEED</span>
+                  </div>
                   <p className="text-xs text-zinc-500 mt-1">
-                    How soon do you need this completed? Be realistic — we'll work with your schedule.
+                    Select target delivery speed and milestone allocation.
                   </p>
                 </div>
 
@@ -429,13 +466,13 @@ export const Planner: React.FC = () => {
                       <div
                         key={t.id}
                         onClick={() => setProTimeline(t.id)}
-                        className={`cursor-pointer p-8 rounded-md border flex flex-col items-center justify-center text-center min-h-[160px] transition-all duration-150 select-none ${
+                        className={`cursor-pointer p-8 rounded-md border flex flex-col items-center justify-center text-center min-h-[160px] transition-all duration-200 select-none ${
                           isSelected
-                            ? 'border-white bg-white/[0.04] shadow-[0_0_15px_rgba(255,255,255,0.1)]'
+                            ? 'border-cyan-400/80 bg-cyan-400/5 shadow-[0_0_20px_rgba(0,240,255,0.15)]'
                             : 'border-white/[0.08] bg-[#070707] hover:border-white/20 hover:bg-white/[0.02]'
                         }`}
                       >
-                        <h4 className="font-mono text-sm sm:text-base font-bold uppercase tracking-widest text-white mb-2">
+                        <h4 className={`font-mono text-sm sm:text-base font-bold uppercase tracking-widest mb-2 ${isSelected ? 'text-cyan-300' : 'text-white'}`}>
                           {t.title}
                         </h4>
                         <span className="text-xs text-zinc-400 font-sans">
@@ -451,16 +488,16 @@ export const Planner: React.FC = () => {
                   <button
                     type="button"
                     onClick={() => setProStep(2)}
-                    className="px-6 py-3 rounded-sm text-xs font-mono font-medium uppercase tracking-wider text-zinc-300 border border-white/10 hover:border-white/20 bg-transparent transition-all"
+                    className="cyber-btn-secondary px-6 py-3 rounded-sm text-xs font-mono font-medium uppercase tracking-wider"
                   >
                     &larr; BACK
                   </button>
                   <button
                     type="button"
                     onClick={() => setProStep(4)}
-                    className="px-8 py-3 rounded-sm text-xs font-mono font-bold uppercase tracking-wider bg-white text-black hover:bg-zinc-200 transition-all shadow"
+                    className="cyber-btn-primary px-8 py-3 rounded-sm text-xs font-mono font-bold uppercase tracking-wider"
                   >
-                    NEXT &rarr;
+                    NEXT: SPECIFICATIONS &rarr;
                   </button>
                 </div>
               </div>
@@ -540,16 +577,16 @@ export const Planner: React.FC = () => {
                   <button
                     type="button"
                     onClick={() => setProStep(3)}
-                    className="px-6 py-3 rounded-sm text-xs font-mono font-medium uppercase tracking-wider text-zinc-300 border border-white/10 hover:border-white/20 bg-transparent transition-all"
+                    className="cyber-btn-secondary px-6 py-3 rounded-sm text-xs font-mono font-medium uppercase tracking-wider"
                   >
                     &larr; BACK
                   </button>
                   <button
                     type="button"
                     onClick={() => setProStep(5)}
-                    className="px-8 py-3 rounded-sm text-xs font-mono font-bold uppercase tracking-wider bg-white text-black hover:bg-zinc-200 transition-all shadow"
+                    className="cyber-btn-primary px-8 py-3 rounded-sm text-xs font-mono font-bold uppercase tracking-wider"
                   >
-                    NEXT &rarr;
+                    NEXT: TRANSMIT &rarr;
                   </button>
                 </div>
               </div>
@@ -559,11 +596,12 @@ export const Planner: React.FC = () => {
             {proStep === 5 && (
               <form onSubmit={handleProSubmit} className="space-y-8 animate-in fade-in duration-200">
                 <div className="border-b border-white/[0.08] pb-5">
-                  <h3 className="font-mono text-xs uppercase text-zinc-300 tracking-wider font-semibold">
-                    05 / CONTACT DETAILS & SUBMIT
-                  </h3>
+                  <div className="inline-flex items-center gap-2 font-mono text-xs uppercase text-cyan-400 tracking-wider font-semibold mb-1">
+                    <span className="w-1.5 h-1.5 rounded-full bg-cyan-400" />
+                    <span>05 / DIRECT CHANNEL & DISPATCH</span>
+                  </div>
                   <p className="text-xs text-zinc-500 mt-1">
-                    Where should our engineering leads send your project proposal and timeline breakdown?
+                    Where should our engineering leads transmit your technical proposal and milestone architecture?
                   </p>
                 </div>
 
@@ -583,7 +621,7 @@ export const Planner: React.FC = () => {
                       placeholder="e.g. Christian Dela Cruz"
                       value={proContact.name}
                       onChange={(e) => setProContact({ ...proContact, name: e.target.value })}
-                      className="w-full px-4 py-3 rounded-sm bg-[#060606] border border-white/10 text-white placeholder-zinc-600 focus:outline-none focus:border-white text-xs sm:text-sm font-sans transition-colors"
+                      className="w-full px-4 py-3 rounded-sm bg-[#060606] border border-white/10 text-white placeholder-zinc-600 focus:outline-none focus:border-cyan-400/80 text-xs sm:text-sm font-sans transition-colors"
                     />
                   </div>
 
@@ -601,7 +639,7 @@ export const Planner: React.FC = () => {
                       placeholder="christian@company.com"
                       value={proContact.email}
                       onChange={(e) => setProContact({ ...proContact, email: e.target.value })}
-                      className="w-full px-4 py-3 rounded-sm bg-[#060606] border border-white/10 text-white placeholder-zinc-600 focus:outline-none focus:border-white text-xs sm:text-sm font-sans transition-colors"
+                      className="w-full px-4 py-3 rounded-sm bg-[#060606] border border-white/10 text-white placeholder-zinc-600 focus:outline-none focus:border-cyan-400/80 text-xs sm:text-sm font-sans transition-colors"
                     />
                   </div>
                 </div>
@@ -619,34 +657,37 @@ export const Planner: React.FC = () => {
                     placeholder="e.g. +63 917 123 4567 or @telegram_handle"
                     value={proContact.handle}
                     onChange={(e) => setProContact({ ...proContact, handle: e.target.value })}
-                    className="w-full px-4 py-3 rounded-sm bg-[#060606] border border-white/10 text-white placeholder-zinc-600 focus:outline-none focus:border-white text-xs sm:text-sm font-sans transition-colors"
+                    className="w-full px-4 py-3 rounded-sm bg-[#060606] border border-white/10 text-white placeholder-zinc-600 focus:outline-none focus:border-cyan-400/80 text-xs sm:text-sm font-sans transition-colors"
                   />
                 </div>
 
                 {/* Scope Summary Card */}
-                <div className="p-5 rounded-md bg-[#060606] border border-white/10 space-y-3 font-mono text-xs">
-                  <span className="text-zinc-500 uppercase tracking-widest block font-bold">
-                    CONFIGURATION SUMMARY
-                  </span>
+                <div className="p-5 rounded-md bg-[#08080A] border border-white/10 space-y-3 font-mono text-xs">
+                  <div className="flex items-center justify-between">
+                    <span className="text-cyan-400 uppercase tracking-widest block font-bold">
+                      // COMPILED SCOPE SPECIFICATION //
+                    </span>
+                    <span className="text-zinc-500 text-[10px]">VERIFIED</span>
+                  </div>
                   <div className="flex flex-wrap gap-1.5 pt-1">
                     {proServices.map((sid) => {
                       const item = PROFESSIONAL_SERVICES.find((s) => s.id === sid);
                       return (
-                        <span key={sid} className="px-2 py-0.5 rounded bg-white/10 text-white">
+                        <span key={sid} className="px-2.5 py-1 rounded-sm bg-white/[0.04] border border-white/10 text-zinc-200">
                           {item?.title}
                         </span>
                       );
                     })}
                   </div>
-                  <div className="pt-2 border-t border-white/[0.06] flex flex-wrap items-center justify-between text-zinc-400">
+                  <div className="pt-2 border-t border-white/[0.08] flex flex-wrap items-center justify-between text-zinc-400">
                     <span>
-                      Budget:{' '}
+                      Budget Target:{' '}
                       <strong className="text-white">
                         {PROFESSIONAL_BUDGETS.find((b) => b.id === proBudget)?.range}
                       </strong>
                     </span>
                     <span>
-                      Timeline:{' '}
+                      Speed:{' '}
                       <strong className="text-white">
                         {PROFESSIONAL_TIMELINES.find((t) => t.id === proTimeline)?.title} (
                         {PROFESSIONAL_TIMELINES.find((t) => t.id === proTimeline)?.duration})
@@ -660,15 +701,15 @@ export const Planner: React.FC = () => {
                   <button
                     type="button"
                     onClick={() => setProStep(4)}
-                    className="px-6 py-3 rounded-sm text-xs font-mono font-medium uppercase tracking-wider text-zinc-300 border border-white/10 hover:border-white/20 bg-transparent transition-all"
+                    className="cyber-btn-secondary px-6 py-3 rounded-sm text-xs font-mono font-medium uppercase tracking-wider"
                   >
                     &larr; BACK
                   </button>
                   <button
                     type="submit"
-                    className="px-8 py-3 rounded-sm text-xs font-mono font-bold uppercase tracking-wider bg-white text-black hover:bg-zinc-200 transition-all shadow-[0_0_20px_rgba(255,255,255,0.15)] flex items-center gap-2"
+                    className="cyber-btn-primary px-8 py-3.5 rounded-sm text-xs font-mono font-bold uppercase tracking-wider flex items-center gap-2"
                   >
-                    <span>SUBMIT INQUIRY</span>
+                    <span>TRANSMIT BRIEF</span>
                     <Send className="w-3.5 h-3.5" />
                   </button>
                 </div>

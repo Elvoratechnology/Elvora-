@@ -3,6 +3,7 @@ import { SectionHeading } from '../components/SectionHeading';
 import { BlogCard } from '../components/BlogCard';
 import { ArticleReaderModal } from '../components/ArticleReaderModal';
 import { BLOG_POSTS, BlogPost } from '../data/blogPosts';
+import { Search } from 'lucide-react';
 
 export const Blog: React.FC = () => {
   const [selectedPost, setSelectedPost] = React.useState<BlogPost | null>(null);
@@ -20,25 +21,25 @@ export const Blog: React.FC = () => {
   });
 
   return (
-    <div className="max-w-6xl mx-auto px-6 lg:px-8 py-16 sm:py-24">
+    <div className="max-w-6xl mx-auto px-6 lg:px-8 py-20 sm:py-28 relative">
       <SectionHeading
-        label="Journal"
-        heading="Perspectives on modern web technology."
-        description="Practical articles on web development, digital strategy, and building for the web in the Philippines."
+        label="[ INTELLIGENCE FEED // PERSPECTIVES ]"
+        heading="Technical discourse & digital engineering."
+        description="Essays, blueprints, and architectural breakdowns on modern web development, performance optimization, and technology systems."
       />
 
-      {/* Filters */}
-      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-5 mb-12 pb-6 border-b border-white/[0.07]">
+      {/* Filters & Search */}
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-5 mb-12 pb-6 border-b border-white/[0.08]">
         <div className="flex flex-wrap gap-2">
           {categories.map((cat) => (
             <button
               key={cat}
               onClick={() => setSelectedCategory(cat)}
               type="button"
-              className={`px-3.5 py-1.5 text-[13px] rounded-sm transition-colors ${
+              className={`px-3.5 py-1.5 text-xs font-mono rounded-sm transition-all ${
                 selectedCategory === cat
-                  ? 'bg-white text-black font-medium'
-                  : 'text-[#6B6B6B] hover:text-white border border-white/[0.08] hover:border-white/20'
+                  ? 'bg-white text-black font-bold shadow-[0_0_12px_rgba(255,255,255,0.3)]'
+                  : 'text-zinc-400 hover:text-white border border-white/10 hover:border-white/20 bg-white/[0.02]'
               }`}
             >
               {cat}
@@ -46,30 +47,33 @@ export const Blog: React.FC = () => {
           ))}
         </div>
 
-        <input
-          type="text"
-          placeholder="Search..."
-          value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
-          className="w-full sm:w-52 px-3.5 py-1.5 text-[13px] bg-[#111] border border-white/[0.08] text-white placeholder-[#444] rounded-sm focus:outline-none focus:border-white/25 transition-colors"
-        />
+        <div className="relative w-full sm:w-64">
+          <input
+            type="text"
+            placeholder="Search dispatches..."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            className="w-full pl-9 pr-3.5 py-2 text-xs font-mono bg-[#08080A] border border-white/10 text-white placeholder-zinc-500 rounded-sm focus:outline-none focus:border-cyan-400/80 transition-colors"
+          />
+          <Search className="w-3.5 h-3.5 text-zinc-500 absolute left-3 top-1/2 -translate-y-1/2" />
+        </div>
       </div>
 
       {/* Grid */}
       {filteredPosts.length > 0 ? (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredPosts.map((post) => (
             <BlogCard key={post.id} post={post} onRead={setSelectedPost} />
           ))}
         </div>
       ) : (
-        <div className="py-20 text-center">
-          <p className="text-[#6B6B6B] mb-4">No articles match your filters.</p>
+        <div className="py-20 text-center cyber-card p-12 rounded-sm border border-white/10">
+          <p className="font-mono text-sm text-zinc-400 mb-4">// NO MATCHING DISPATCHES LOCATED //</p>
           <button
             onClick={() => { setSelectedCategory('All'); setSearchQuery(''); }}
-            className="text-sm text-white underline underline-offset-2"
+            className="text-xs font-mono text-cyan-400 hover:text-cyan-300 underline underline-offset-4"
           >
-            Reset filters
+            RESET ALL FILTERS
           </button>
         </div>
       )}
