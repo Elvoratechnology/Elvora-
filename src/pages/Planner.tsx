@@ -27,7 +27,7 @@ import {
 
 export const Planner: React.FC = () => {
   // Mode: 'professional' | 'student'
-  const [plannerMode, setPlannerMode] = useState<'professional' | 'student'>('student');
+  const [plannerMode, setPlannerMode] = useState<'professional' | 'student'>('professional');
 
   // Student State
   const [studentSelectedAddons, setStudentSelectedAddons] = useState<string[]>([]);
