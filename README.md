@@ -1,12 +1,14 @@
 # ELVORA — Technology Studio Portfolio
 
-> Modern digital technology studio portfolio — built with React, TypeScript, Vite, and Tailwind CSS.
+> Modern digital technology studio portfolio & engineering showcase — engineered with React, TypeScript, Vite, and Tailwind CSS.
+
+Live Deployment: [https://elvora-zeta.vercel.app](https://elvora-zeta.vercel.app)
 
 ---
 
 ## 📋 Overview
 
-**ELVORA** is a digital technology studio website featuring a multi-page portfolio, project planner, blog, team, and contact pages. The site is built as a static multi-page application (MPA) using React + Vite with full dark/light mode support.
+**ELVORA** is a modern digital technology studio website featuring a high-performance multi-page experience: an architectural project portfolio with interactive live previews, instant digital scope cost planner, engineering articles, team showcase, and a connected Formspree contact form.
 
 ---
 
@@ -14,12 +16,13 @@
 
 | Tool | Purpose |
 |---|---|
-| [React 18](https://react.dev) | UI framework |
-| [TypeScript](https://www.typescriptlang.org) | Type safety |
-| [Vite 6](https://vitejs.dev) | Build tool & dev server |
-| [Tailwind CSS v3](https://tailwindcss.com) | Utility-first styling |
-| [Lucide React](https://lucide.dev) | Icons |
-| [Framer Motion](https://www.framer.com/motion) | Animations |
+| [React 18](https://react.dev) | Modern component architecture & UI rendering |
+| [TypeScript](https://www.typescriptlang.org) | Strict type safety & maintainability |
+| [Vite 6](https://vitejs.dev) | Ultra-fast build tool, HMR, and MPA bundler |
+| [Tailwind CSS v3](https://tailwindcss.com) | Utility-first styling & frosted glass aesthetics |
+| [Lucide React](https://lucide.dev) | High-contrast geometric iconography |
+| [Framer Motion](https://www.framer.com/motion) | Fluid UI animations & transitions |
+| [Formspree](https://formspree.io) | Contact form submission API with anti-spam honeypot |
 
 ---
 
@@ -27,59 +30,62 @@
 
 ```
 Elvora/
+├── .vscode/
+│   └── settings.json      # VS Code File Nesting (groups configs & HTML pages)
+│
 ├── public/
-│   ├── logo.png           # Main logo (white E mark)
-│   ├── logo-light.png     # Light mode logo (black E mark)
-│   └── favicon.png        # Browser tab icon
+│   ├── logo.png           # Official studio emblem mark
+│   ├── favicon.png        # Browser favicon
+│   └── hero-laptop.jpg    # High-resolution hero showcase asset
 │
 ├── src/
 │   ├── components/
-│   │   ├── Navbar.tsx          # Top navigation with dark/light toggle
-│   │   ├── Footer.tsx          # Site footer
-│   │   ├── Button.tsx          # Reusable button component
-│   │   ├── ProjectCard.tsx     # Live iframe project previews
-│   │   ├── BlogCard.tsx        # Blog post cards
-│   │   ├── ArticleReaderModal.tsx  # Full-screen article reader
-│   │   ├── FAQAccordion.tsx    # Expandable FAQ items
-│   │   ├── ServiceItem.tsx     # Service listing rows
-│   │   ├── SectionHeading.tsx  # Reusable section headers
-│   │   └── Layout.tsx          # Page wrapper
+│   │   ├── Navbar.tsx             # Header with theme toggle, brand lockup, & sticky border
+│   │   ├── Footer.tsx             # Global footer with studio links & contact info
+│   │   ├── Layout.tsx             # Page layout & dynamic document metadata wrapper
+│   │   ├── ProjectCard.tsx        # Live iframe project preview cards
+│   │   ├── BlogCard.tsx           # Article cards with tag filters
+│   │   ├── ArticleReaderModal.tsx # Full-screen modal reader
+│   │   ├── FAQAccordion.tsx       # Interactive FAQ items
+│   │   ├── ServiceItem.tsx        # Studio capability & offering rows
+│   │   ├── SectionHeading.tsx     # Typography headers
+│   │   └── Button.tsx             # Reusable interactive buttons
 │   │
 │   ├── pages/
-│   │   ├── Home.tsx       # Landing page
-│   │   ├── Portfolio.tsx  # Full project portfolio
-│   │   ├── Planner.tsx    # Project cost planner (Student & Professional)
-│   │   ├── Contact.tsx    # Contact form
-│   │   ├── Blog.tsx       # Articles & journal
-│   │   └── Team.tsx       # Team members
+│   │   ├── Home.tsx          # Studio landing page
+│   │   ├── Portfolio.tsx     # Case studies & live interactive system models
+│   │   ├── Planner.tsx       # Instant investment planner (Student & Pro tiers in ₱)
+│   │   ├── Contact.tsx       # Formspree-connected inquiry form
+│   │   ├── Blog.tsx          # Tech journal & architecture articles
+│   │   └── Team.tsx          # Engineering and leadership profiles
 │   │
 │   ├── data/
-│   │   ├── selectedWork.ts  # Featured projects (Worklane, Inky, Resiboss)
-│   │   ├── services.ts      # Service offerings
-│   │   ├── pricing.ts       # Planner pricing data
-│   │   ├── process.ts       # How we work steps
-│   │   ├── principles.ts    # Company principles
-│   │   ├── faqs.ts          # FAQ items
-│   │   ├── blogPosts.ts     # Blog article content
-│   │   └── teamMembers.ts   # Team member profiles
+│   │   ├── selectedWork.ts   # Featured case studies (Worklane, Inky, Resiboss)
+│   │   ├── services.ts       # Studio capabilities & services data
+│   │   ├── pricing.ts        # Planner configuration & tier pricing
+│   │   ├── process.ts        # Sprint methodology & workflow
+│   │   ├── principles.ts     # Studio engineering philosophy
+│   │   ├── faqs.ts           # Frequently asked questions
+│   │   ├── blogPosts.ts      # Technical articles
+│   │   └── teamMembers.ts    # Studio team profiles
 │   │
 │   ├── styles/
-│   │   └── index.css    # Global styles + light/dark mode
+│   │   └── index.css         # Global styles, dot grid, & theme invert filters
 │   │
-│   ├── App.tsx          # Router / page switcher
-│   └── main.tsx         # Entry point
+│   ├── App.tsx               # Client-side router & dynamic page switcher
+│   └── main.tsx              # DOM mount entry point
 │
-├── index.html           # Home page shell
-├── portfolio.html       # Portfolio page shell
-├── planner.html         # Planner page shell
-├── contact.html         # Contact page shell
-├── blog.html            # Blog page shell
-├── team.html            # Team page shell
+├── index.html                # Home entry shell
+├── portfolio.html            # Portfolio entry shell
+├── planner.html              # Planner entry shell
+├── contact.html              # Contact entry shell
+├── blog.html                 # Blog entry shell
+├── team.html                 # Team entry shell
 │
-├── vite.config.ts
-├── tailwind.config.js
-├── tsconfig.json
-└── package.json
+├── vite.config.ts            # Vite MPA build configuration (port 3000)
+├── tailwind.config.js        # Design system & color tokens
+├── tsconfig.json             # TypeScript configuration
+└── package.json              # Project scripts & dependencies
 ```
 
 ---
@@ -94,21 +100,21 @@ Elvora/
 ### Installation
 
 ```bash
-# Clone the repo
-git clone <your-repo-url>
+# 1. Clone repository
+git clone https://github.com/Elvoratechnology/Elvora-.git
 cd Elvora
 
-# Install dependencies
+# 2. Install dependencies
 npm install
 ```
 
-### Development
+### Local Development
 
 ```bash
 npm run dev
 ```
 
-Opens at `http://localhost:5173`
+The dev server starts at `http://localhost:3000`.
 
 ### Production Build
 
@@ -116,7 +122,9 @@ Opens at `http://localhost:5173`
 npm run build
 ```
 
-Output goes to `/dist`. Preview the build locally:
+Generates production-ready, minified static bundles in `dist/`.
+
+### Local Build Preview
 
 ```bash
 npm run preview
@@ -124,85 +132,91 @@ npm run preview
 
 ---
 
+## 📬 Contact Form Integration (Formspree)
+
+The contact form in [src/pages/Contact.tsx](src/pages/Contact.tsx) submits to the active Formspree endpoint:
+
+* **Endpoint**: `https://formspree.io/f/mbgdzylw`
+* **Method**: `POST` via AJAX (`fetch`) with `Accept: application/json`
+* **Payload Fields**:
+  - `name`: Client's full name
+  - `email`: Client's email address
+  - `phone`: Contact number / WhatsApp
+  - `contactMethod`: Preferred communication channel (Email, WhatsApp, Phone Call, Zoom, Messenger)
+  - `subject`: Dynamic subject line (`New Project Inquiry from [Name] - Elvora Technology`)
+  - `message`: Project goals & description
+  - `_replyto`: Auto-routes inbox replies directly to the client's email
+  - `_gotcha`: Hidden honeypot field for bot spam prevention
+* **UX & State**:
+  - Client-side validation for required fields and valid email format
+  - Duplicate submission prevention (`isSubmitting` disables inputs and button)
+  - Branded dark-glass *"Inquiry Received"* confirmation card
+  - Actionable error alert banner with fallback to `elvora1007@gmail.com`
+
+---
+
 ## 🌙 Dark / Light Mode
 
-The site uses a **CSS filter inversion** approach for theming:
+The website uses an instant **CSS inversion filter** for global theming:
 
-- **Dark mode** (default) — `#050505` background, `#EDEDED` text
-- **Light mode** — `filter: invert(1) hue-rotate(180deg)` on `<body>` flips every color to its exact opposite
-
-Theme state is persisted to `localStorage` under the key `elvora-theme`. A script injected in each HTML `<head>` prevents flash-of-wrong-theme on load.
-
-Toggle is located in the **Navbar** (☀️ / 🌙 pill button beside "Start a Project").
+- **Dark Mode** (default): `#050505` background, `#EDEDED` typography, subtle glass borders.
+- **Light Mode**: Inverted filter with hue compensation on `<body>`. Embedded iframes are protected from inversion to display live websites in their true colors.
+- **Persistence**: Saved automatically in `localStorage` under `elvora-theme`.
 
 ---
 
-## 📄 Pages
+## 📄 Pages & Routes
 
-| Route | File | Description |
+| Route | Entry | Description |
 |---|---|---|
-| `/` | `index.html` | Hero, services, process, selected work, FAQ, CTA |
-| `/portfolio.html` | `portfolio.html` | Full project grid |
-| `/planner.html` | `planner.html` | Interactive cost estimator (Student + Professional modes) |
-| `/contact.html` | `contact.html` | Inquiry form with sidebar info |
-| `/blog.html` | `blog.html` | Articles with category filter & article reader modal |
-| `/team.html` | `team.html` | Team member profiles |
+| `/` | `index.html` | Studio hero, capabilities, process, featured work, FAQ, CTA |
+| `/portfolio.html` | `portfolio.html` | Architectural project showcase with live iframe models |
+| `/planner.html` | `planner.html` | Interactive investment estimator (Student & Professional tiers in ₱) |
+| `/contact.html` | `contact.html` | Project inquiry form connected to Formspree |
+| `/blog.html` | `blog.html` | Technical journals with categorized modal reader |
+| `/team.html` | `team.html` | Studio engineering and design team profiles |
 
 ---
 
-## 🖥️ Featured Projects
+## 🖥️ Featured Live Projects
 
-Live embedded iframe previews of real deployed apps:
+Interactive embedded preview models of real deployed systems:
 
-| Project | URL |
+| Project | Live URL |
 |---|---|
-| **Worklane** — Smart Project Management | https://worklane-five.vercel.app |
-| **Inky** — Automated E-signatures | https://inky-tan.vercel.app |
-| **Resiboss 2.0** — Personal Spending Intelligence | https://resiboss.vercel.app |
+| **Worklane** — Smart Project Management | [worklane-five.vercel.app](https://worklane-five.vercel.app) |
+| **Inky** — Automated E-signatures | [inky-tan.vercel.app](https://inky-tan.vercel.app) |
+| **Resiboss 2.0** — Personal Spending Intelligence | [resiboss.vercel.app](https://resiboss.vercel.app) |
 
 ---
 
-## 🎨 Design Tokens
+## 🎨 Design System
 
 ```css
-/* Dark Mode (default) */
---bg:       #050505
---surface:  #0A0A0A
---border:   rgba(255, 255, 255, 0.08)
---text:     #EDEDED
---muted:    #6B6B6B
+/* Core Dark Palette */
+--bg:       #050505   /* Pitch background */
+--surface:  #0A0A0A   /* Secondary surface */
+--border:   rgba(255, 255, 255, 0.08) /* Subtle glass divider */
+--text:     #EDEDED   /* Primary typography */
+--muted:    #8E8E93   /* Secondary typography */
 ```
 
-**Fonts:**
-- Headings → [Space Grotesk](https://fonts.google.com/specimen/Space+Grotesk)
-- Body → [Inter](https://fonts.google.com/specimen/Inter)
-- Mono → [JetBrains Mono](https://fonts.google.com/specimen/JetBrains+Mono)
+* **Headings**: [Space Grotesk](https://fonts.google.com/specimen/Space+Grotesk)
+* **Body**: [Inter](https://fonts.google.com/specimen/Inter)
+* **Monospace**: [JetBrains Mono](https://fonts.google.com/specimen/JetBrains+Mono)
 
 ---
 
-## 📝 Before Going Live
-
-> Replace all placeholder content before deploying to production:
-
-- [ ] `hello@yourdomain.com` → real contact email (in `Footer.tsx` and `Contact.tsx`)
-- [ ] Social links in `Footer.tsx` (GitHub, LinkedIn, Twitter)
-- [ ] Team member names & bios in `src/data/teamMembers.ts`
-- [ ] Blog post authors in `src/data/blogPosts.ts`
-- [ ] Open Graph image (`og:image` meta tag in all `.html` files)
-- [ ] Real domain in Vite config if using a custom base path
-
----
-
-## 📦 Scripts
+## 📦 Available Scripts
 
 | Command | Description |
 |---|---|
-| `npm run dev` | Start development server |
-| `npm run build` | Type-check + production build |
-| `npm run preview` | Preview production build locally |
+| `npm run dev` | Starts Vite local development server on port 3000 |
+| `npm run build` | Runs TypeScript type-checking (`tsc`) and generates production bundle (`vite build`) |
+| `npm run preview` | Runs local HTTP server to preview the production build in `dist/` |
 
 ---
 
-## 📜 License
+## 📜 License & Ownership
 
-Private — ELVORA Technology. All rights reserved.
+© ELVORA Technology. All rights reserved.

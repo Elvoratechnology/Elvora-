@@ -63,8 +63,8 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPath }) => {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-200 ${
-        scrolled ? 'bg-[#050505]/90 backdrop-blur-md border-b border-white/[0.08]' : 'bg-transparent'
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-200 border-b border-white/[0.08] ${
+        scrolled ? 'bg-[#050505]/95 backdrop-blur-md' : 'bg-[#050505]/80 backdrop-blur-sm'
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-10">
@@ -78,25 +78,25 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPath }) => {
               className="h-7 sm:h-[30px] w-auto object-contain group-hover:opacity-90 transition-opacity"
             />
             <div className="flex flex-col justify-center">
-              <span className="font-heading font-black text-base tracking-[0.2em] text-white leading-none block">
+              <span className="font-heading font-black text-lg sm:text-xl tracking-[0.2em] text-white leading-none block">
                 ELVORA
               </span>
-              <span className="font-mono text-[8px] tracking-[0.36em] text-[#71717A] uppercase leading-none block mt-0.5">
+              <span className="font-mono text-[9.5px] sm:text-[10px] tracking-[0.36em] text-[#8E8E93] uppercase leading-none block mt-[2px]">
                 TECHNOLOGY
               </span>
             </div>
           </a>
 
           {/* Center Navigation Links */}
-          <nav className="hidden md:flex items-center gap-8" id="desktop-nav">
+          <nav className="hidden md:flex items-center gap-9" id="desktop-nav">
             {navLinks.map((link) => {
               const active = isActive(link);
               return (
                 <a
                   key={link.name}
                   href={link.href}
-                  className={`text-[13px] tracking-wide transition-colors duration-150 ${
-                    active ? 'text-white font-medium' : 'text-[#71717A] hover:text-white'
+                  className={`text-[15px] tracking-wide transition-colors duration-150 ${
+                    active ? 'text-white font-semibold' : 'text-[#8E8E93] hover:text-white'
                   }`}
                 >
                   {link.name}
@@ -114,7 +114,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPath }) => {
               id="theme-toggle-btn"
               aria-label={isDark ? 'Switch to Light Mode' : 'Switch to Night Mode'}
               title={isDark ? 'Switch to Light Mode' : 'Switch to Night Mode'}
-              className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-sm border border-white/15 bg-white/[0.03] hover:border-white/30 transition-all text-xs font-mono select-none"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-sm border border-white/15 bg-white/[0.03] hover:border-white/30 transition-all text-xs font-mono select-none"
             >
               <Sun className={`w-3.5 h-3.5 transition-colors ${!isDark ? 'text-amber-500 font-bold' : 'text-zinc-600'}`} />
               <span className="text-zinc-600">/</span>
@@ -125,7 +125,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPath }) => {
             <a
               href="/planner.html"
               id="nav-cta-button"
-              className="inline-flex items-center px-5 py-2 text-[13px] font-semibold text-black bg-white rounded-sm hover:bg-[#E8E8E8] transition-colors shadow-sm"
+              className="inline-flex items-center px-5 py-2.5 text-sm font-semibold text-black bg-white rounded-sm hover:bg-[#E8E8E8] transition-colors shadow-sm"
             >
               Start a Project
             </a>
@@ -165,8 +165,8 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPath }) => {
                 key={link.name}
                 href={link.href}
                 onClick={() => setMobileMenuOpen(false)}
-                className={`block text-sm py-1 transition-colors ${
-                  active ? 'text-white font-medium' : 'text-[#71717A] hover:text-white'
+                className={`block text-base py-1.5 transition-colors ${
+                  active ? 'text-white font-semibold' : 'text-[#8E8E93] hover:text-white'
                 }`}
               >
                 {link.name}

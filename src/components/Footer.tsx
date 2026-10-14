@@ -17,10 +17,10 @@ export const Footer: React.FC = () => {
                 className="h-7 sm:h-[30px] w-auto object-contain"
               />
               <div className="flex flex-col justify-center">
-                <span className="font-heading font-black text-base tracking-[0.2em] text-white leading-none block">
+                <span className="font-heading font-black text-lg tracking-[0.2em] text-white leading-none block">
                   ELVORA
                 </span>
-                <span className="font-mono text-[8px] tracking-[0.36em] text-[#71717A] uppercase leading-none block mt-0.5">
+                <span className="font-mono text-[9.5px] tracking-[0.36em] text-[#8E8E93] uppercase leading-none block mt-[2px]">
                   TECHNOLOGY
                 </span>
               </div>

@@ -40,7 +40,7 @@ export const Contact: React.FC = () => {
     setIsSubmitting(true);
     setErrorMessage(null);
 
-    const endpoint = 'https://formspree.io/f/mbgdzy1w';
+    const endpoint = 'https://formspree.io/f/mbgdzylw';
     const payload = {
       name: trimmedName,
       email: trimmedEmail,
@@ -84,9 +84,9 @@ export const Contact: React.FC = () => {
 
   /* Glass input — semi-transparent frosted style */
   const inputClass =
-    'w-full px-4 py-3.5 text-sm bg-white/[0.04] backdrop-blur-sm border border-white/[0.1] text-white placeholder-white/25 rounded-xl focus:outline-none focus:border-white/30 focus:bg-white/[0.07] transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed';
+    'w-full px-4 py-3.5 text-sm sm:text-[15px] bg-white/[0.04] backdrop-blur-sm border border-white/[0.1] text-white placeholder-white/25 rounded-xl focus:outline-none focus:border-white/30 focus:bg-white/[0.07] transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed';
 
-  const labelClass = 'block text-[11px] font-mono text-white/40 uppercase tracking-wider mb-2';
+  const labelClass = 'block text-xs font-mono text-white/50 uppercase tracking-wider mb-2';
 
   return (
     <div className="relative min-h-[calc(100vh-80px)] overflow-hidden py-16 sm:py-24">
@@ -179,7 +179,7 @@ export const Contact: React.FC = () => {
                 ) : (
                   /* ── Form ── */
                   <form
-                    action="https://formspree.io/f/mbgdzy1w"
+                    action="https://formspree.io/f/mbgdzylw"
                     method="POST"
                     onSubmit={handleSubmit}
                     className="space-y-5"
