@@ -10,15 +10,19 @@ export const Footer: React.FC = () => {
 
           {/* Brand */}
           <div className="md:col-span-1 space-y-4">
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-2">
               <img
                 src="/logo.png"
                 alt="ELVORA TECHNOLOGY"
-                className="h-10 w-10 object-contain"
+                className="h-7 sm:h-[30px] w-auto object-contain"
               />
-              <div>
-                <span className="font-heading font-bold text-base tracking-[0.18em] text-white block">ELVORA</span>
-                <span className="font-mono text-[9px] tracking-[0.3em] text-[#71717A] uppercase block mt-0.5">Technology</span>
+              <div className="flex flex-col justify-center">
+                <span className="font-heading font-black text-base tracking-[0.2em] text-white leading-none block">
+                  ELVORA
+                </span>
+                <span className="font-mono text-[8px] tracking-[0.36em] text-[#71717A] uppercase leading-none block mt-0.5">
+                  TECHNOLOGY
+                </span>
               </div>
             </div>
             <p className="text-sm text-[#71717A] leading-relaxed max-w-xs">
@@ -74,10 +78,10 @@ export const Footer: React.FC = () => {
               Ready to build something? Use our planner to scope your project.
             </p>
             <a
-              href="mailto:hello@yourdomain.com"
+              href="mailto:elvora1007@gmail.com"
               className="block text-sm text-white mb-4 hover:text-[#B0B0B0] transition-colors"
             >
-              hello@yourdomain.com
+              elvora1007@gmail.com
             </a>
             <a
               href="/planner.html"

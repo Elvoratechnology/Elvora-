@@ -17,7 +17,6 @@ import {
   Layout,
   Smartphone,
   Monitor,
-  Cloud,
   Check,
   CheckCircle2,
   X,
@@ -105,8 +104,6 @@ export const Planner: React.FC = () => {
         return <Smartphone className="w-5 h-5 mb-3" />;
       case 'desktop':
         return <Monitor className="w-5 h-5 mb-3" />;
-      case 'cloud':
-        return <Cloud className="w-5 h-5 mb-3" />;
       default:
         return <Code2 className="w-5 h-5 mb-3" />;
     }
@@ -284,34 +281,6 @@ export const Planner: React.FC = () => {
         ========================================================================= */}
         {plannerMode === 'professional' && !proSubmitted && (
           <div className="relative z-10 space-y-10 animate-in fade-in duration-200">
-            {/* Step Progress Bar */}
-            <div className="border border-white/10 bg-[#070707] p-2 sm:p-2.5 rounded-sm flex items-center justify-between overflow-x-auto gap-1.5 select-none">
-              {[
-                { num: 1, label: 'SERVICES' },
-                { num: 2, label: 'BUDGET' },
-                { num: 3, label: 'TIMELINE' },
-                { num: 4, label: 'DETAILS' },
-                { num: 5, label: 'SUBMIT' },
-              ].map((s) => (
-                <button
-                  type="button"
-                  key={s.num}
-                  onClick={() => s.num < proStep && setProStep(s.num)}
-                  className={`flex items-center gap-2 px-3 sm:px-4 py-1.5 rounded-sm font-mono text-[10px] sm:text-[11px] whitespace-nowrap transition-all ${
-                    proStep === s.num
-                      ? 'bg-white text-black font-bold shadow-sm'
-                      : proStep > s.num
-                      ? 'text-zinc-300 hover:text-white cursor-pointer'
-                      : 'text-zinc-600 cursor-not-allowed'
-                  }`}
-                >
-                  <span className={proStep === s.num ? 'text-black font-bold' : 'text-zinc-500'}>
-                    0{s.num}
-                  </span>
-                  <span>{s.label}</span>
-                </button>
-              ))}
-            </div>
 
             {/* STEP 01: FEATURES NEEDED */}
             {proStep === 1 && (
@@ -325,8 +294,8 @@ export const Planner: React.FC = () => {
                   </p>
                 </div>
 
-                {/* 2x5 Grid of Service Cards */}
-                <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3.5">
+                {/* 3x3 Grid of Service Cards */}
+                <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 gap-3.5">
                   {PROFESSIONAL_SERVICES.map((srv) => {
                     const isSelected = proServices.includes(srv.id);
                     return (

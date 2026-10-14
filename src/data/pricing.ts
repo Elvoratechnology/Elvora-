@@ -29,7 +29,7 @@ export const STUDENT_ADDONS: StudentAddOn[] = [
 export interface ProServiceOption {
   id: string;
   title: string;
-  iconType: 'code' | 'layers' | 'user' | 'building' | 'palette' | 'system' | 'webapp' | 'mobile' | 'desktop' | 'cloud';
+  iconType: 'code' | 'layers' | 'user' | 'building' | 'palette' | 'system' | 'webapp' | 'mobile' | 'desktop';
 }
 
 export const PROFESSIONAL_SERVICES: ProServiceOption[] = [
@@ -42,7 +42,6 @@ export const PROFESSIONAL_SERVICES: ProServiceOption[] = [
   { id: 'web-app-development', title: 'WEB APP DEVELOPMENT', iconType: 'webapp' },
   { id: 'mobile-app-development', title: 'MOBILE APP DEVELOPMENT', iconType: 'mobile' },
   { id: 'desktop-app-development', title: 'DESKTOP APPLICATION DEVELOPMENT', iconType: 'desktop' },
-  { id: 'cloud-solutions', title: 'CLOUD SOLUTIONS', iconType: 'cloud' },
 ];
 
 export interface ProBudgetOption {

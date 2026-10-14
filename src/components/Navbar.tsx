@@ -71,17 +71,17 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPath }) => {
         <div className="flex items-center justify-between h-20">
 
           {/* Brand Logo with official mark */}
-          <a href="/index.html" id="nav-brand-logo" className="flex items-center gap-3 group select-none">
+          <a href="/index.html" id="nav-brand-logo" className="flex items-center gap-2 group select-none">
             <img
               src="/logo.png"
               alt="ELVORA TECHNOLOGY Logo"
-              className="h-10 w-10 object-contain group-hover:opacity-85 transition-opacity"
+              className="h-7 sm:h-[30px] w-auto object-contain group-hover:opacity-90 transition-opacity"
             />
-            <div className="flex flex-col leading-none">
-              <span className="font-heading font-black text-base tracking-[0.22em] text-white">
+            <div className="flex flex-col justify-center">
+              <span className="font-heading font-black text-base tracking-[0.2em] text-white leading-none block">
                 ELVORA
               </span>
-              <span className="font-mono text-[8px] tracking-[0.38em] text-[#71717A] uppercase mt-1">
+              <span className="font-mono text-[8px] tracking-[0.36em] text-[#71717A] uppercase leading-none block mt-0.5">
                 TECHNOLOGY
               </span>
             </div>
