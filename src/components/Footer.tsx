@@ -20,7 +20,7 @@ export const Footer: React.FC = () => {
                 <span className="font-heading font-black text-lg tracking-[0.2em] text-white leading-none block">
                   ELVORA
                 </span>
-                <span className="font-mono text-[9.5px] tracking-[0.36em] text-[#8E8E93] uppercase leading-none block mt-[2px]">
+                <span className="font-mono text-[9.5px] tracking-[0.36em] text-white/70 uppercase leading-none block mt-[2px]">
                   TECHNOLOGY
                 </span>
               </div>

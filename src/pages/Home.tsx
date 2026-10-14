@@ -77,19 +77,26 @@ export const Home: React.FC = () => {
             </a>
           </div>
 
-          {/* Bottom strip divider & feature badges */}
-          <div className="w-full max-w-4xl mx-auto pt-8 border-t border-white/[0.08] flex flex-wrap items-center justify-center gap-8 sm:gap-14 text-xs font-mono text-zinc-500">
-            <div className="flex items-center gap-2">
-              <span className="text-zinc-600 font-bold text-sm">&lt;/&gt;</span>
-              <span>Clean Code</span>
+          {/* Bottom strip — studio stats */}
+          <div className="w-full max-w-4xl mx-auto pt-8 border-t border-white/[0.08] flex flex-wrap items-center justify-center gap-10 sm:gap-16">
+            <div className="text-center">
+              <p className="font-heading font-black text-white text-2xl sm:text-3xl leading-none tracking-tight">₱15k – ₱250k</p>
+              <p className="font-mono text-[10px] uppercase tracking-widest text-zinc-500 mt-1.5">Project Range</p>
             </div>
-            <div className="flex items-center gap-2">
-              <span className="text-zinc-600 font-bold text-sm">⚡</span>
-              <span>High Performance</span>
+            <div className="w-px h-8 bg-white/10 hidden sm:block" />
+            <div className="text-center">
+              <p className="font-heading font-black text-white text-2xl sm:text-3xl leading-none tracking-tight">React + Vite</p>
+              <p className="font-mono text-[10px] uppercase tracking-widest text-zinc-500 mt-1.5">Core Stack</p>
             </div>
-            <div className="flex items-center gap-2">
-              <span className="text-zinc-600 font-bold text-sm">📱</span>
-              <span>Fully Responsive</span>
+            <div className="w-px h-8 bg-white/10 hidden sm:block" />
+            <div className="text-center">
+              <p className="font-heading font-black text-white text-2xl sm:text-3xl leading-none tracking-tight">24h</p>
+              <p className="font-mono text-[10px] uppercase tracking-widest text-zinc-500 mt-1.5">Response Time</p>
+            </div>
+            <div className="w-px h-8 bg-white/10 hidden sm:block" />
+            <div className="text-center">
+              <p className="font-heading font-black text-white text-2xl sm:text-3xl leading-none tracking-tight">PH-Based</p>
+              <p className="font-mono text-[10px] uppercase tracking-widest text-zinc-500 mt-1.5">Remote-First Studio</p>
             </div>
           </div>
         </div>
